@@ -1,4 +1,4 @@
-﻿using CreditSuisse;
+﻿namespace CreditSuisse.TraidDomain;
 
 public class Trade : ITrade
 {
@@ -9,7 +9,7 @@ public class Trade : ITrade
     public DateTime NextPaymentDate { get; }
 
     private DateTime ReferenceDate { get; }
-    
+
     public string Risk => (Value, ClientSector, NextPaymentDate) switch
     {
         (_, _, DateTime nextPaymentDate)
@@ -26,8 +26,10 @@ public class Trade : ITrade
         NextPaymentDate = nextPaymentDate;
         ReferenceDate = referenceDate;
     }
-    public static Trade[] Build(string[] lines)
+    
+    public static Trade[] Build(string file)
     {
+        var lines = File.ReadAllLines(file);
         var referenceDate = DateTime.Parse(lines[0]);
         var remaningLines = lines.Skip(2).ToArray();
 

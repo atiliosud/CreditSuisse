@@ -1,7 +1,8 @@
 ﻿
+using CreditSuisse.TraidDomain;
+
 var inputFile = @"C:\Projects\CreditSuisse\CreditSuisse\Input.txt";
-var lines = File.ReadAllLines(inputFile);
-var trades = Trade.Build(lines);
+var trades = Trade.Build(inputFile);
 
 foreach (var trade in trades)
 {

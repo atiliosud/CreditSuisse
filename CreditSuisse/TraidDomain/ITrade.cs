@@ -1,4 +1,4 @@
-﻿namespace CreditSuisse;
+﻿namespace CreditSuisse.TraidDomain;
 
 public interface ITrade
 {
